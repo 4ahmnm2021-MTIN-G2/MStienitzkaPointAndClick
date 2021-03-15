@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "TEMP",
+"productVersion": "0.1",
+"dataUrl": "PointAndClickAnwendung.data.unityweb",
+"wasmCodeUrl": "PointAndClickAnwendung.wasm.code.unityweb",
+"wasmFrameworkUrl": "PointAndClickAnwendung.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.1.14f1"
+}
