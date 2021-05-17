@@ -12,7 +12,8 @@ public class MoveScript : MonoBehaviour {
   public float velocity;
 
   void Update () {
-    if (Input.GetMouseButtonDown (0)) {
+    if(Canvas.activeSelf == false){
+     if (Input.GetMouseButtonDown (0)) {
 
       Ray ray = cam.ScreenPointToRay (Input.mousePosition);
       RaycastHit hit;
@@ -25,6 +26,10 @@ public class MoveScript : MonoBehaviour {
     if (Input.GetMouseButtonUp (0)) {
       newPos = cube.transform.position.magnitude;
       velocity = oldPos - newPos / time;
+    }    
     }
   }
+ public void ExitButton(){
+  Canvas.SetActive(false);
+ }
 }

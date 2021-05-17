@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class onTrigger : MonoBehaviour {
@@ -11,17 +8,20 @@ public class onTrigger : MonoBehaviour {
   public string cylinderout;
   public string ballout;
   public string binInteractText;
-  private bool ball = false;
-  private bool balltext = false;
+  public string cylInteractText;
+  private bool bin = false;
+  private bool bintext = false;
   private bool cylindertext = false;
+  private bool clue1 = false;
+  private bool clue2 = false;
   private bool cyl = false;
 
   //Check Collider
   void OnTriggerEnter (Collider target) {
     if (target.tag == "Interactable") {
       can.SetActive (true);
-      ball = true;
-      if (balltext == true) {
+      bin = true;
+      if (bintext == true) {
         objectText.text = ballout;
         Debug.Log ("trigger enter");
 
@@ -39,7 +39,7 @@ public class onTrigger : MonoBehaviour {
   void OnTriggerExit (Collider target) {
     if (target.tag == "Interactable") {
       can.SetActive (false);
-      ball = false;
+      bin = false;
       Debug.Log ("trigger exit");
       objectText.text = "???";
     }
@@ -52,10 +52,10 @@ public class onTrigger : MonoBehaviour {
   }
 
   public void Inspect () {
-    if (ball == true) {
+    if (bin == true) {
 
       objectText.text = ballout;
-      balltext = true;
+      bintext = true;
     }
     if (cyl == true) {
       objectText.text = cylinderout;
@@ -64,10 +64,23 @@ public class onTrigger : MonoBehaviour {
   }
 
   public void Interact () {
-    if (ball && balltext) {
+    if (bin && bintext) {
       ballout = binInteractText;
       objectText.text = binInteractText;
+      clue1 = true;
       Zeitung.SetActive (false);
+    }
+     if (cyl && cylindertext) {
+      cylinderout = cylInteractText;
+      objectText.text = cylInteractText;
+      clue2 = true; 
+    }
+  }
+
+  void Update()
+  {
+    if(clue1 && clue2){
+      Debug.Log("NextLevel");
     }
   }
 }
