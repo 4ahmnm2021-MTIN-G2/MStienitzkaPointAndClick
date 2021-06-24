@@ -10,6 +10,7 @@ public class MoveScript : MonoBehaviour {
   public float oldPos;
   public float newPos;
   public float velocity;
+    public Animator animator; 
 
   void Update () {
     if(Canvas.activeSelf == false){
@@ -21,7 +22,9 @@ public class MoveScript : MonoBehaviour {
       if (coll.Raycast (ray, out hit, 100.0f)) {
         cube.transform.DOMove (hit.point, time);
         Debug.Log ("Move");
+        animator.SetBool("IsWalking", true);
       }
+
     }
     if (Input.GetMouseButtonUp (0)) {
       newPos = cube.transform.position.magnitude;
